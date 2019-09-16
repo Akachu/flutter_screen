@@ -53,6 +53,12 @@ public class ScreenPlugin implements MethodCallHandler {
         }
         result.success(null);
         break;
+      case "resetBrightness":
+        WindowManager.LayoutParams layoutParams_ = _registrar.activity().getWindow().getAttributes();
+        layoutParams_.screenBrightness = -1f;
+        _registrar.activity().getWindow().setAttributes(layoutParams_);
+        result.success(null);
+        break;
 
       default:
         result.notImplemented();
